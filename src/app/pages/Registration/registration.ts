@@ -56,7 +56,7 @@ import { ApiService } from './../../services/api';
               <label class="col-md-4 control-label">Gender</label>
               <div class="col-md-4 selectContainer">
                  <select [(ngModel)]="gender" name="ugender" #lgender="ngModel" class="form-control selectpicker">
-                    <option value="">Select your Gender</option>
+
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                  </select>
@@ -67,7 +67,6 @@ import { ApiService } from './../../services/api';
               <label class="col-md-4 control-label">Type</label>
               <div class="col-md-4 selectContainer">
                  <select [(ngModel)]="type" name="utype" #ltype="ngModel" class="form-control selectpicker">
-                    <option value="">Select your type</option>
                     <option value='admin'>Admin</option>
                     <option value='trainee'>Trainee</option>
                     <option value='trainer'>Trainer</option>
@@ -75,31 +74,21 @@ import { ApiService } from './../../services/api';
               </div>
            </div>
 
-           <!-- Text input-->
            <div class="form-group">
               <label class="col-md-4 control-label">Mobile</label>
               <div class="col-md-4">
                  <input [(ngModel)]="mobile" name="umobile" #lmobile="ngModel" placeholder="Mobile Number" class="form-control"  type="text">
               </div>
            </div>
-           <!-- Text input-->
+
            <div class="form-group">
               <label class="col-md-4 control-label" >Course Name</label>
               <div class="col-md-4">
                  <input [(ngModel)]="course" name="ucourse" #lcourse="ngModel" placeholder="Course Name" class="form-control"  type="Text">
               </div>
            </div>
-           <!-- Text input
-           <div class="form-group">
-              <label class="col-md-4 control-label" >Company Name</label>
-              <div class="col-md-4">
-                 <input name="confirm_password" placeholder="Company Name" class="form-control"  type="password">
-              </div>
-           </div>-->
-           <div class="form-group">
-            <div class="col-md-4"><button class="btn btn-success center-block">Register</button> </div>
-            <div class="col-md-4"><button [routerLink]="['/Registration/Attendance']" class="btn btn-success center-block">Register With Attendance</button></div>
-           </div>
+            <div class="col-md-4 center-block"><button class="btn btn-success">Register</button> </div> <br>
+            <div class="col-md-4 center-block"><button [routerLink]="['/Registration/Attendance']" class="btn btn-success center-block">Register With Attendance</button></div>
         </form>
      </div>
   </div>

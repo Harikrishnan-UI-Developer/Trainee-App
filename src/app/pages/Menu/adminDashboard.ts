@@ -18,8 +18,8 @@ import { ApiService } from './../../services/api';
                     <button class="btn btn-block btn-lg btn-success">FEEDBACK</button><br>
                     <button class="btn btn-block btn-lg btn-danger">ASSESMENT</button><br>
                     <button [routerLink]="['/course/courseList']" class="btn btn-block btn-lg" style="background-color:#ccc;">COURSE LIST</button><br>
-                    <button [routerLink]="['/trainee/TraineeList']" class="btn btn-block btn-lg btn-warning" style="background-color:#666;">TRAINEE LIST</button><br>
-                    <button [routerLink]="['/trainer/TrainerList']" class="btn btn-block btn-lg btn-warning" style="background-color:black;">TRAINER LIST</button><br>
+                    <button [routerLink]="['/trainee/TraineeList']" class="btn btn-block btn-lg btn-warning" style="background-color:#666;">USER'S LIST</button><br>
+                    
                 </div>
            </div>
         </div>

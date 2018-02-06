@@ -27,7 +27,7 @@ template:`
         <td>{{records[key].age}}</td>
         <td>{{records[key].gender}}</td>
         <td>{{records[key].type}}</td>
-        <button class="btn btn-xs" (click)="deleteuserlist(records[key].email)"><span class="glyphicon glyphicon-trash"></span></button>
+        <td><button class="btn btn-xs" (click)="deleteuserlist(records[key].email)"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
       </tbody>
   </table>
