@@ -22,12 +22,14 @@ template:`
     <tbody *ngFor="let key of arrayKeys(records)">
       <tr>
         <td>{{records[key].name}}</td>
-        <td>{{records[key].email}}</td>
+        <td>{{records[key].email}}</td>3
         <td>{{records[key].mobile}}</td>
         <td>{{records[key].age}}</td>
         <td>{{records[key].gender}}</td>
         <td>{{records[key].type}}</td>
-        <td><button class="btn btn-xs" (click)="deleteuserlist(records[key].email)"><span class="glyphicon glyphicon-trash"></span></button></td>
+        <td><button class="btn btn-xs" (click)="deleteuserlist(records[key].email)"><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="btn btn-xs" (click)="deleteuserlist(records[key].email)"><span class="glyphicon glyphicon-upload"></span></button>
+        <button class="btn btn-xs" (click)="deleteuserlist(records[key].email)"><span class="glyphicon glyphicon-user"></span></button></td>
       </tr>
       </tbody>
   </table>
@@ -68,8 +70,6 @@ export class TraineeListClas{
         this.records=res;
         this.viewuserslist();
       })
-
-
   }
 
   arrayKeys(obj:any){

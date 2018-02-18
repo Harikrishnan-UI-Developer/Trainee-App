@@ -31,10 +31,7 @@ export class ApiService{
   viewuserslist(data:any){
     console.log('API');
       return this.post('admin/viewUserslist',data);
-
   }
-
-
 
   register(data:any){
     console.log('RegisterDatafromApi',data);
@@ -57,13 +54,17 @@ export class ApiService{
       return this.post('admin/deleteuserList',data);
   }
 
-  viewusersNameLists(data:any)
-  {
+  viewusersNameLists(data:any){
     return this.post('admin/viewUserListName',data);
   }
 
   finduserrecord(data:any){
     return this.post('admin/userList_view',data);
+  }
+
+  updaterec(data:any){
+    console.log('updatedata',data);
+    return this.post('admin/updateusetrec',data);
   }
 
   post(url:string,params:any){

@@ -39,13 +39,6 @@ import { ApiService } from './../../services/api';
            </div>
            </div>
 
-           <!-- Text input
-           <div class="form-group">
-              <label class="col-md-4 control-label" >NIRC</label>
-              <div class="col-md-4">
-                 <input name="last_name" placeholder="NRIC" class="form-control"  type="text">
-              </div>
-           </div> -->
            <div class="form-group">
               <label class="col-md-4 control-label" >Age</label>
               <div class="col-md-4">

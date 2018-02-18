@@ -4,85 +4,118 @@ import  { ApiService } from './../../../services/api';
 @Component({
 selector:'userDetail',
 template:`
-
 <NavBar></NavBar>
-
 <div class="container">
-  <div class="row">
-      <div class="col-md-4">
-      <table class="table">
-      <thead>
-        <tr>
-        <th>User&ndash;List</th>
-        </tr>
-      </thead>
-<tbody *ngFor="let val of arrayKeys(datas)">
-   <tr>
-     <td><button (click)="userview(datas[val].email)" class="btn btn-md">{{datas[val].name}}</button></td>
-   </tr>
-  </tbody>
-</table>
+   <div class="row">
+      <div class="col-md-2">
+         <ul class="list-group">
+  <li class="list-group-item disabled">User&ndash;List</li>
+  <li class="list-group-item" *ngFor="let val of arrayKeys(datas)">
+  <a (click)="userview(datas[val].email)">{{datas[val].name}}</a>
+  </li>
+</ul>
       </div>
-<!-- {{updateRecord|json}} update record la irukura value json format la print aagum. -->
+      <!-- {{updateRecord|json}} update record la irukura value json format la print aagum. -->
+      <div class="col-md-10">
+      <div *ngIf="updateRecord && updateRecord.name">
+      <div class="panel panel-info">
+         <div class="panel-heading">New Update</div>
+         <div class="panel-body">
 
-<div class="col-md-8" *ngIf="updateRecord && updateRecord.name">   <!-- on time la load aaguratha issue stop panna ngIf pottu irukom -->
-
-        <form #userformDetail="ngForm"  class="myForm" (ngSubmit)="userdetailupdate(userformDetail)">
-            <label>Name </label>
-            <input readonly disabled class="form-control" type="text"
-            [(ngModel)]="updateRecord.name" name="uname" #lname="ngModel" /><br>  <!-- input la ngModel use panni iruntha (value="") ithuku kulla value ah ngmodel la than kudukanum   -->
-            <label class="control-label">Mobile Number</label>
-            <input disabled readonly  class="form-control" type="text"
-            [(ngModel)]="updateRecord.mobile" name="umnum" #lmnum="ngModel" /><br>
-
-            <label>Address line #1</label>
-            <input class="form-control" type="text" [(ngModel)]="addr" name="uaddr1" #laddr1="ngModel" /><br>
-            <label>Address Line #2</label>
-            <input class="form-control" type="text" [(ngModel)]="addr" name="uaddr2" #laddr2="ngModel" /><br>
-            <label class="control-label">Course</label>
-            <input readonly disabled class="form-control" type="text" [(ngModel)]="updateRecord.course" name="ucourse" #lcourse="ngModel" /><br>
-               <!-- <select [(ngModel)]="cname" name="coursename" #lcname="ngModel" class="form-control selectpicker">
-                  <option value="angular 1">Angular 4</option>
-                  <option value="angular 2">Php</option>
-                  <option value="angular 3">Handoop</option>
-                  <option value="angular 4">Javascript</option>
-                  <option value="angular 5">Sap</option>
-                  <option value="angular 6">Angular 6</option>
-               </select><br> -->
-           <label class="control-label">Batch-Type</label>
-             <select [(ngModel)]="btype" name="batchtype" #lbtype="ngModel" class="form-control selectpicker">
-
-                <option value="weekend">Week End</option>
-                <option value="weekdays">Week Days</option>
-             </select><br>
-           <label class="control-label">Batch-Timing</label>
-              <select [(ngModel)]="btiming" name="batchtiming" #lbtime="ngModel" class="form-control selectpicker">
-
-                 <option value="weekend">Morning</option>
-                 <option value="weekdays">Evening</option>
-              </select><br>
-              <label class="control-label">Trainer</label>
-                 <select [(ngModel)]="btype" name="batchtype" #lbtype="ngModel" class="form-control selectpicker">
-
-                    <option value="ragu">Ragu</option>
-                    <option value="ravi">Ravi</option>
-                    <option value="hari">Hari</option>
-                    <option value="vimal">Vimal</option>
-                 </select><br>
-             <label class="control-label">Status</label>
-                <select [(ngModel)]="btype" name="batchtype" #lbtype="ngModel" class="form-control selectpicker">
-
-                   <option value="active">Active</option>
-                   <option value="inactive">inactive</option>
-                </select><br>
-      </form>
-
-
-        <button class="btn btn-md btn-primary center-block" (click)="userdetailupdate(userformDetail)">Update It!!!</button><br>
-        <button class="btn btn-md btn-primary center-block" (click)="cancelupdate()">Cancel</button>
-
+         <!-- on time la load aaguratha issue stop panna ngIf pottu irukom -->
+         <form #userformDetail="ngForm"  class="myForm" (ngSubmit)="userdetailupdate(userformDetail)">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="md-form"><label>Name </label>
+                  <input readonly disabled class="form-control" type="text"
+                  [(ngModel)]="updateRecord.name" name="uname" #lname="ngModel" /><br>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="md-form">
+                  <label class="control-label">Mobile Number</label>
+                  <input disabled readonly  class="form-control" type="text"
+                  [(ngModel)]="updateRecord.mobile" name="umobile" #lmnum="ngModel" /><br>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               <div class="md-form">
+                <label class="control-label">Email id</label>
+                  <input class="form-control" type="text"
+                  [(ngModel)]="updateRecord.email" name="uemail" #lemail="ngModel" /><br>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="md-form">
+                  <label class="control-label">Course</label>
+                  <input readonly disabled class="form-control" type="text" [(ngModel)]="updateRecord.course" name="ucourse" #lcourse="ngModel" /><br>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               <div class="md-form"><label>Address line #1</label>
+                  <input class="form-control" type="text" [(ngModel)]="address1" name="uaddr1" #laddr1="ngModel" /><br>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="md-form"><label>Address Line #2</label>
+                  <input class="form-control" type="text" [(ngModel)]="address2" name="uaddr2" #laddr2="ngModel" /><br>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               <div class="md-form">
+                  <label class="control-label">Batch-Type</label>
+                  <select [(ngModel)]="batchtype" name="ubtype" #lbtype="ngModel" class="form-control selectpicker">
+                  <option value="weekend">Week End</option>
+                  <option value="weekdays">Week Days</option>
+                  </select><br>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="md-form">
+                  <label class="control-label">Batch-Timing</label>
+                  <select [(ngModel)]="batchtiming" name="ubtiming" #lbtime="ngModel" class="form-control selectpicker">
+                  <option value="weekend">Morning</option>
+                  <option value="weekdays">Evening</option>
+                  </select><br>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               <div class="md-form">
+                  <label class="control-label">Trainer</label>
+                  <select [(ngModel)]="trainer" name="uttype" #lttype="ngModel" class="form-control selectpicker">
+                  <option value="ragu">Ragu</option>
+                  <option value="ravi">Ravi</option>
+                  <option value="hari">Hari</option>
+                  <option value="vimal">Vimal</option>
+                  </select><br>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="md-form">
+                  <label class="control-label">Status</label>
+                  <select [(ngModel)]="status" name="ustatustype" #lstatus="ngModel" class="form-control selectpicker">
+                  <option value="active">Active</option>
+                  <option value="inactive">inactive</option>
+                  </select><br>
+               </div>
+            </div>
+         </div>
+         <button class="btn btn-md btn-primary center-block">Update It!!!</button><br>
+         </form>
+         <button class="btn btn-md btn-primary center-block">Cancel</button>
       </div>
-    </div>
+      </div>
+      </div>
+      </div>
+   </div>
 </div>
 `,
 
@@ -123,19 +156,41 @@ this.datas= res;
 });
 }
 
-
 userview(mail){
-
   this.api.finduserrecord({"email":mail}).then((res:any)=>{
   this.updateRecord=res[0];
   //this.viewuserNamelist();
 });
 }
 
+// Vimal Pichandi this.api.updateUserdetails({
+//   uemail: updateuserdetails.value.uemail,
+//    upassword: updateuserdetails.value.upassword,
+//   umaddress1: updateuserdetails.value.umaddress1                })
 
-
-userdetailupdate(datas:any){
-
-console.log('datas',datas);
-}
+userdetailupdate(formdata:any){
+    if(formdata.valid){
+//console.log('updatedata',formdata);
+//    console.log('Submitted',formdata.value);
+       this.api.updaterec({
+       uemail: formdata.value.uemail,
+       uaddr1: formdata.value.uaddr1,
+       uaddr2: formdata.value.uaddr2,
+       ubtype: formdata.value.ubtype,
+       ubtiming: formdata.value.ubtiming,
+       uttype: formdata.value.uttype,
+       ustatustype: formdata.value.ustatustype  }
+     ).then((dat:any)=>{
+              console.log('dat',dat);
+        if(dat.status=="success"){
+              alert('Register Success');
+      }else{
+        alert('Register Failed');
+      }
+     })
+    }
+    else{
+      alert('Registration form not valid');
+    }
+  }
 }
